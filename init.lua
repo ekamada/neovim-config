@@ -1,4 +1,10 @@
 
+-- Leader Keymapping  for all plugins
+vim.g.mapleader = " "
+
+----------
+-- Plugins
+----------
 -- Found in lua/
 require("keymaps") 	    -- Personal Keymappings
 
@@ -8,13 +14,15 @@ require("config.lazy")  -- Plugin Manager.
 --NOTE: Plugins will not work if pasted above the plugin manager in this file
 
 -- Found in lua/plugins
-require("lualine").setup({}) 	            -- Statusline
-require("mini.pairs").setup()
+require("lualine").setup({}) 	-- Statusline
+require("mini.pairs").setup()   -- Automatically close brackets and quotes
+require("nvim-tree").setup()    -- File tree for navigation
 require('tiny-inline-diagnostic').setup({	-- Better diagnostic messages
     preset = "powerline",
     throttle = 20,
-    enable_on_insert = true
+    -- enable_on_insert = true
 })
+
 vim.diagnostic.config({virtual_text=false}) -- False required for above plugin
 
 -- LSP 
@@ -27,8 +35,8 @@ require("lazydev").setup() -- Adds Vim API to lua language server
 --------------------
 -- Vim Configuration
 --------------------
-
-vim.cmd.colorscheme("tokyonight") -- Colorscheme
+-- vim.cmd.colorscheme("tokyonight") -- Colorscheme
+vim.cmd.colorscheme("rose-pine-main") -- Colorscheme
 
 vim.opt.nu = true       -- Numbered Lines
 vim.opt.wrap = false    -- No Text Wrapping
