@@ -24,6 +24,8 @@ require('tiny-inline-diagnostic').setup({	-- Better diagnostic messages
     -- enable_on_insert = true
 })
 
+
+
 vim.diagnostic.config({virtual_text=false}) -- False required for above plugin
 
 -- LSP 
@@ -47,5 +49,6 @@ vim.o.softtabstop = 4       -- Config backspace to jump to the prev. tabstop
 vim.o.shiftwidth = 4 	    -- Set the shift width to 4
 vim.o.textwidth = 80 	    -- Text width for formatting text into paragraphs (using gw)
 vim.o.smartindent = true    -- Smart Indent
+vim.o.ignorecase = true     -- case insensitive searching
 vim.o.smartcase = true      -- ignore case when searching with lowercase letters
 
