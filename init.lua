@@ -82,17 +82,18 @@ require("lazydev").setup() -- Adds Vim API to lua language server
 --------------------
 -- Vim Configuration
 --------------------
--- vim.cmd.colorscheme("tokyonight") -- Colorscheme
-vim.cmd.colorscheme("rose-pine-moon") -- Colorscheme
+vim.cmd.colorscheme("tokyonight") -- Colorscheme
+-- vim.cmd.colorscheme("rose-pine-moon") -- Colorscheme
 
-vim.opt.nu = true           -- Numbered Lines
-vim.opt.wrap = false        -- No Text Wrapping
-vim.o.expandtab = true	    -- Neovim always uses spaces instead of tabs
-vim.o.tabstop = 4           -- Set Tabstops every 4 spaces
-vim.o.softtabstop = 4       -- Config backspace to jump to the prev. tabstop 
-vim.o.shiftwidth = 4 	    -- Set the shift width to 4
-vim.o.textwidth = 80 	    -- Text width for formatting text into paragraphs (using gw)
-vim.o.smartindent = true    -- Smart Indent
-vim.o.ignorecase = true     -- case insensitive searching
-vim.o.smartcase = true      -- ignore case when searching with lowercase letters
+vim.opt.nu = true               -- Numbered Lines
+vim.opt.wrap = false            -- No Text Wrapping
+vim.opt.clipboard="unnamedplus" -- Use global clipboard
+vim.o.expandtab = true	        -- Neovim always uses spaces instead of tabs
+vim.o.tabstop = 4               -- Set Tabstops every 4 spaces
+vim.o.softtabstop = 4           -- Config backspace to jump to the prev. tabstop 
+vim.o.shiftwidth = 4 	        -- Set the shift width to 4
+vim.o.textwidth = 80 	        -- Text width for formatting text into paragraphs (using gw)
+vim.o.smartindent = true        -- Smart Indent
+vim.o.ignorecase = true         -- case insensitive searching
+vim.o.smartcase = true          -- ignore case when searching with lowercase letters
 
