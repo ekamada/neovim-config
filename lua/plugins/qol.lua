@@ -22,6 +22,17 @@ return {
       -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
       -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
       lazy = false,
+    },
+
+    {
+      'nvim-treesitter/nvim-treesitter',
+      lazy = false,
+      build = ':TSUpdate',
+      config = function ()
+        require("nvim-treesitter").install({"svelte", "typescript", "html", "css", "scss", "diff"})
+      end,
+      highlight = { enable = true }, -- replaces vim syntax highlighting
+      indent = { enable = true }     -- replaces vim indentation
     }
 }
 
