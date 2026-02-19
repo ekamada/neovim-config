@@ -23,15 +23,59 @@ require('tiny-inline-diagnostic').setup({	-- Better diagnostic messages
     throttle = 20,
     -- enable_on_insert = true
 })
-
-
-
-vim.diagnostic.config({virtual_text=false}) -- False required for above plugin
-
 -- LSP 
 require("mason").setup()
 require("mason-lspconfig").setup()
 require('lspconfig')
+
+-- treesitter
+require("nvim-treesitter").setup({})
+
+
+-- This autocommand enables treesitter, which includes syntax highlighting.
+-- Because there are a number of language types not supported. we check against
+-- those and do not enable treesitter in those cases.
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "*",
+    callback = function()
+        local unsupported_types= {"oil", "lazy_backdrop", 'lazy', "cmp_menu", "text"}
+        local filetype_supported = true
+        local ft = vim.bo.filetype
+        for _, val in pairs(unsupported_types) do
+            if (ft==val) then
+               filetype_supported = false
+            end
+        end
+        if (filetype_supported) then
+            vim.treesitter.start()
+        end
+    end,
+})
+
+
+-- This configures the diagnostic messages that nvim provides. It does 3
+-- important things. 
+--  1. disables virtual text which is required for the tiny-inline-diagnostic
+--  2. disables diagnostic signs that bump out the line numbers in an annoying way
+--  3. Colors the line numbers instead of leaving a warning message
+vim.diagnostic.config({
+    virtual_text=false, -- False required for diagnostic plugin
+    signs = {
+        text = {
+            [vim.diagnostic.severity.ERROR] = '',
+            [vim.diagnostic.severity.WARN]  = '',
+            [vim.diagnostic.severity.INFO]  = '',
+            [vim.diagnostic.severity.HINT]  = ''
+        },
+        numhl = {
+            [vim.diagnostic.severity.ERROR] = 'ErrorMsg',
+            [vim.diagnostic.severity.WARN]  = 'WarningMsg',
+            [vim.diagnostic.severity.INFO]  = 'DiagnosticInfo',
+            [vim.diagnostic.severity.HINT]  = 'DiagnosticHint'
+        }
+    }
+})
+
 
 require("lazydev").setup() -- Adds Vim API to lua language server
 

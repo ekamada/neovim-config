@@ -29,7 +29,7 @@ return {
       lazy = false,
       build = ':TSUpdate',
       config = function ()
-        require("nvim-treesitter").install({"svelte", "typescript", "html", "css", "scss", "diff"})
+        require("nvim-treesitter").install({"svelte", "typescript", "html", "css", "scss", "diff", "gitcommit"})
       end,
       highlight = { enable = true }, -- replaces vim syntax highlighting
       indent = { enable = true }     -- replaces vim indentation
